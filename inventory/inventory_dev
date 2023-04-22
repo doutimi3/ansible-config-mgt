@@ -1,13 +1,13 @@
 # Hosts Private IPs
-nfs-server ansible_host=172.31.32.194
-db-server ansible_host=172.31.36.78
-web-server1 ansible_host=172.31.44.163
-web-server2 ansible_host=172.31.35.240
-alb-server ansible_host=172.31.36.38
+nfs-server ansible_host=<private ip>
+db-server ansible_host=<private ip>
+web-server1 ansible_host=<private ip>
+web-server2 ansible_host=<private ip>
+alb-server ansible_host=<private ip>
 
-# Groups
+#Groups
 [nfsgroup]
-nfs-server 
+nfs-server
 
 [dbgroup]
 db-server

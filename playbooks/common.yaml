@@ -1,3 +1,4 @@
+---
 - name: update web, and nfs
   hosts: webgroup, nfsgroup
   become: true
@@ -49,3 +50,4 @@
 
     - name: Run setup_webserver.sh on remote server
       shell: ~/sample_script.sh
+
