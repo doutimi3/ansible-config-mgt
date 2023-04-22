@@ -5,7 +5,7 @@ web-server1 ansible_host=172.31.44.163
 web-server2 ansible_host=172.31.35.240
 alb-server ansible_host=172.31.36.38
 
-#Groups
+# Groups
 [nfsgroup]
 nfs-server 
 

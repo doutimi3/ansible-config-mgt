@@ -1,4 +1,3 @@
----
 - name: update web, and nfs
   hosts: webgroup, nfsgroup
   become: true
