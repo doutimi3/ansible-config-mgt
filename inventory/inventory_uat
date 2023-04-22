@@ -1,0 +1,11 @@
+# Hosts Private IPs
+web-server1 ansible_host=172.31.41.69
+web-server2 ansible_host=172.31.35.236
+
+[uat_webgroup]
+web-server1
+web-server2
+
+[uat_webgroup:vars]
+ansible_user=ec2-user
+ansible_ssh_private_key_file=~/ansible-config-mgt/DevOpsMasterClass_London.pem

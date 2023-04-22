@@ -1,0 +1,23 @@
+---
+- name: update web, and nfs server
+  hosts: webgroup, nfsgroup
+  become: yes
+
+  tasks:
+    - name: delete wireshark
+      yum:
+        name: wireshark
+        state: removed
+
+- name: update ALB and DB server
+  hosts: dbgroup, albgroup
+  become: yes
+
+  tasks:
+    - name: delete wireshark
+      apt:
+        name: wireshark-qt
+        state: absent
+        autoremove: yes
+        purge: yes
+        autoclean: yes
