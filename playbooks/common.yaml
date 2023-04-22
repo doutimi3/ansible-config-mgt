@@ -1,0 +1,52 @@
+---
+- name: update web, and nfs
+  hosts: webgroup, nfsgroup
+  become: true
+
+  tasks:
+    - name: ensure wireshark is at the latest version
+      yum:
+        name: wireshark
+        state: latest
+
+- name: update ALB and DB server
+  hosts: dbgroup, albgroup
+  remote_user: ubuntu
+
+  tasks:
+    - name: Update apt repo
+      apt:
+        update_cache: yes
+
+    - name: ensure wireshark is at the latest version
+      apt:
+        name: wireshark
+        state: latest
+
+- name: Create a new directory and file, change timezone and run a script
+  hosts: all
+  become: true
+  tasks:
+    - name: Create a new directory
+      file:
+        path: ~/testdir
+        state: directory
+        mode: "0755"
+
+    - name: Create a new file inside the directory
+      file:
+        path: ~/testdir/sample_file.yaml
+        state: touch
+
+    - name: Change timezone to London
+      timezone:
+        name: Europe/London
+
+    - name: sample_script.sh to remote server
+      copy:
+        src: ~/ansible-config-mgt/scripts/sample_script.sh
+        dest: ~/sample_script.sh
+        mode: "0755"
+
+    - name: Run setup_webserver.sh on remote server
+      shell: ~/sample_script.sh

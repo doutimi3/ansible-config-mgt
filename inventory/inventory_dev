@@ -1,0 +1,39 @@
+nfs-server ansible_host=172.31.32.194
+db-server ansible_host=172.31.36.78
+web-server1 ansible_host=172.31.44.163
+web-server2 ansible_host=172.31.35.240
+alb-server ansible_host=172.31.36.38
+
+[nfsgroup]
+nfs-server 
+
+[dbgroup]
+db-server
+
+[webgroup]
+web-server1
+web-server2
+
+[albgroup]
+alb-server
+
+[nfsgroup:vars]
+ansible_user=ec2-user
+
+[dbgroup:vars]
+ansible_user=ubuntu
+
+[webgroup:vars]
+ansible_user=ec2-user
+
+[albgroup:vars]
+ansible_user=ubuntu
+
+[devops_tooling:children]
+dbgroup
+nfsgroup
+webgroup
+albgroup
+
+[devops_tooling:vars]
+ansible_ssh_private_key_file=~/ansible-config-mgt/DevOpsMasterClass_London.pem
