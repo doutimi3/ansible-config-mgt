@@ -284,7 +284,9 @@ Verify that the playbook ran successfully:
 
 ![](./img/Wireshark-version.png)
 
+__Conclusion__
 
+We have successfully configure the architecture in such a way that the webservers, db-server and nfs-server would be inside a secured network which cannot be reached directly from the Internet and an Ansible instance is then used as a jumb box to access and configure all servers.
 
 __CREDIT__
 
